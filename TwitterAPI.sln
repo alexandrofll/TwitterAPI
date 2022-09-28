@@ -28,6 +28,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D3B1936-1919-4D02-891D-A67EAFE0E063}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		TwitterAPIDiagram.png = TwitterAPIDiagram.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{C4B9C3EE-965F-4A18-8FA2-88B182776D97}"
