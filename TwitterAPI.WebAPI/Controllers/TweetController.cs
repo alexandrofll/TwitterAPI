@@ -1,65 +1,76 @@
 using Microsoft.AspNetCore.Mvc;
-using TwitterAPI.Data.Context;
-using TwitterAPI.Model;
+using System.Net;
+using TwitterAPI.Application.Exceptions;
+using TwitterAPI.Application.Models.APIModels;
+using TwitterAPI.Application.Services;
 
 namespace TwitterAPI.WebAPI.Controllers
 {
+    /// <summary>
+    /// It exposes api methods to
+    /// create and retrieves tweets data
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class TweetController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
         private readonly ILogger<TweetController> _logger;
-        private readonly TweetDbContext _tweetDbContext;
+        private readonly ITweetService _tweetService;
 
         public TweetController(
             ILogger<TweetController> logger,
-            TweetDbContext tweetDbContext
+            ITweetService tweetService
             )
         {
             _logger = logger;
-            _tweetDbContext = tweetDbContext;
-        }
-
-        [HttpGet(Name = "GetTweet")]
-        public IEnumerable<Tweet> Get()
-        {
-            return Enumerable.Range(1, 5).Select(index => new Tweet
-            {
-                Date = DateTime.Now.AddDays(index),
-                HashTag = $"#{Random.Shared.Next(-20, 55)}",
-                Title = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
-
-        // GET api/<TweetController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            _tweetService = tweetService;
         }
 
         // POST api/<TweetController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType(typeof(TweetAPIModel), 200)]
+        [ProducesResponseType(400)]//bad request
+        [ProducesResponseType(500)]//internal server error
+        public async Task<ActionResult<TweetAPIModel>> Post([FromBody] TweetAPIModel tweetAPIModel)
         {
+            if (ModelState.IsValid)
+            {
+                return Ok(await _tweetService.Create(tweetAPIModel));
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
-        // PUT api/<TweetController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // GET api/<TwitterAPIController>/5
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(TweetAPIModel), 200)]
+        [ProducesResponseType(400)]//bad request
+        [ProducesResponseType(404)]//not found
+        [ProducesResponseType(500)]//internal server error
+
+        public async Task<ActionResult<TweetAPIModel>> Get(int id)
         {
+            try
+            {
+                return Ok(await _tweetService.Get(id));
+            }
+            catch (TweetNotFoundException exception)
+            {
+                return Problem(exception.Message, statusCode: (int)HttpStatusCode.NotFound);
+            }
         }
 
-        // DELETE api/<TweetController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // GET: api/<TwitterAPIController>
+        [HttpGet("GetAggregatedStatistics")]
+        [ProducesResponseType(typeof(TweetAPIModel), 200)]
+        [ProducesResponseType(400)]//bad request
+        [ProducesResponseType(500)]//internal server error
+        public async Task<ActionResult<TweetAPIAggregatedModel>> GetAggregatedStatistics()
         {
+            return Ok(await _tweetService.GetAggregatedStatistics());
         }
     }
 }
