@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TwitterAPI.Application.Models.APIModels;
-using TwitterAPI.Model;
+using TwitterAPI.Domain.Model;
 
 namespace TwitterAPI.Application.AutoMapper
 {
@@ -12,6 +12,8 @@ namespace TwitterAPI.Application.AutoMapper
         public AutoMapperProfile()
         {
             CreateMap<Tweet, TweetAPIModel>().ReverseMap();
+            CreateMap<TweetAggregatedStatistic, TweetAggregatedStatisticAPIModel>().ReverseMap();
+            CreateMap<TweetHashtagsAggregatedStatistic, TweetHashtagsAggregatedStatisticAPIModel>().ReverseMap();
         }
     }
 }

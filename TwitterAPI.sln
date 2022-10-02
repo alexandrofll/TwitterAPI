@@ -39,11 +39,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Data", "4-Data", "{BC779E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1-Data", "4.1-Data", "{BC848D03-71D3-4B46-AE8B-41CAD2B0258A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterAPI.Application", "TwitterAPI.Application\TwitterAPI.Application.csproj", "{C0DD31D1-AAE7-4BF9-9CD9-13139791E03B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitterAPI.Application", "TwitterAPI.Application\TwitterAPI.Application.csproj", "{C0DD31D1-AAE7-4BF9-9CD9-13139791E03B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterAPI.Data", "TwitterAPI.Data\TwitterAPI.Data.csproj", "{B9DA5276-FBEC-4ACC-BBEF-01936B027637}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitterAPI.Data", "TwitterAPI.Data\TwitterAPI.Data.csproj", "{B9DA5276-FBEC-4ACC-BBEF-01936B027637}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterAPI.Model", "TwitterAPI.Model\TwitterAPI.Model.csproj", "{77077DCB-CBC8-4443-A857-28D90CCDC345}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitterAPI.Domain", "TwitterAPI.Model\TwitterAPI.Domain.csproj", "{77077DCB-CBC8-4443-A857-28D90CCDC345}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

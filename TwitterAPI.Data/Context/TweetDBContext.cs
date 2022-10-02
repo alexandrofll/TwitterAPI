@@ -1,23 +1,31 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TwitterAPI.Model;
+using TwitterAPI.Domain.Model;
 
 namespace TwitterAPI.Data.Context
 {
     public class TweetDbContext : DbContext
     {
         public DbSet<Tweet> Tweets { get; set; }
+        public DbSet<TweetAggregatedStatistic> TweetAggregatedStatistics { get; set; }
+        public DbSet<TweetHashtagsAggregatedStatistic> TweetHashtagsAggregatedStatistics { get; set; }
 
         public TweetDbContext(DbContextOptions<TweetDbContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
-            //Database.Migrate();
+            //below migrate strategy is not suitable
+            //for production environment
+            //See here possible migration strategies
+            //https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+            //run following commands from package management console for adding migrations and updates after model changes
+            //Add-Migration migration-02
+            //Update-Database -Verbose
+            Database.Migrate();
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseInMemoryDatabase(databaseName: "TweetDb_InMemory");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

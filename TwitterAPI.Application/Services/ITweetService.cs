@@ -19,7 +19,7 @@ namespace TwitterAPI.Application.Services
         /// It retrieves top 100 tweets from the database 
         /// </summary>
         /// <returns></returns>
-        Task<TweetAPIAggregatedModel> GetAggregatedStatistics();
+        Task<TweetAggregatedStatisticAPIModel> GetAggregatedStatistics();
 
         /// <summary>
         /// It creates a new tweet on the database

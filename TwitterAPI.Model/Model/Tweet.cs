@@ -1,32 +1,33 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TwitterAPI.Application.Models.APIModels
+namespace TwitterAPI.Domain.Model
 {
     /// <summary>
-    /// It is used as api model for tweets
+    /// It is used as model for tweets
     /// </summary>
-    public class TweetAPIModel
+    public class Tweet
     {
         /// <summary>
         /// It gets or sets the tweet primary key
         /// </summary>
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }    
 
         /// <summary>
         /// It gets or sets the tweet title
         /// </summary>
-        [Required]
         public string Title { get; set; }
 
         /// <summary>
         /// It gets or sets the tweet date
         /// </summary>
-        public DateTimeOffset Date { get; set; } = DateTimeOffset.Now;
+        public DateTimeOffset Date { get; set; }
 
         /// <summary>
         /// It gets or sets the twitter hashtag
         /// </summary>
-        [Required]
         public string Hashtag { get; set; }
     }
 }

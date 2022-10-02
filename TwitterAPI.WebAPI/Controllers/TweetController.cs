@@ -68,7 +68,7 @@ namespace TwitterAPI.WebAPI.Controllers
         [ProducesResponseType(typeof(TweetAPIModel), 200)]
         [ProducesResponseType(400)]//bad request
         [ProducesResponseType(500)]//internal server error
-        public async Task<ActionResult<TweetAPIAggregatedModel>> GetAggregatedStatistics()
+        public async Task<ActionResult<TweetAggregatedStatisticAPIModel>> GetAggregatedStatistics()
         {
             return Ok(await _tweetService.GetAggregatedStatistics());
         }

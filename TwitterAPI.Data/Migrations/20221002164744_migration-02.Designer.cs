@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TwitterAPI.Data.Context;
 
@@ -11,9 +12,10 @@ using TwitterAPI.Data.Context;
 namespace TwitterAPI.Data.Migrations
 {
     [DbContext(typeof(TweetDbContext))]
-    partial class TweetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221002164744_migration-02")]
+    partial class migration02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
