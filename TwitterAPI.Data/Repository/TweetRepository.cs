@@ -77,7 +77,7 @@ namespace TwitterAPI.Data.Repository
                     $"SELECT * FROM TweetHashtagsAggregatedStatistics WHERE TweetAggregatedStatisticId = @aggregationId",
                     aggregationIdSqlParamValue
                     )
-                .AsEnumerable();
+                .AsEnumerable().ToList();
 
                 aggregated = await _tweetDbContext
                     .TweetAggregatedStatistics

@@ -5,9 +5,9 @@ namespace TwitterAPI.Data.Context
 {
     public class TweetDbContext : DbContext
     {
-        public DbSet<Tweet> Tweets { get; set; }
-        public DbSet<TweetAggregatedStatistic> TweetAggregatedStatistics { get; set; }
-        public DbSet<TweetHashtagsAggregatedStatistic> TweetHashtagsAggregatedStatistics { get; set; }
+        public DbSet<Tweet>? Tweets { get; set; }
+        public DbSet<TweetAggregatedStatistic>? TweetAggregatedStatistics { get; set; }
+        public DbSet<TweetHashtagsAggregatedStatistic>? TweetHashtagsAggregatedStatistics { get; set; }
 
         public TweetDbContext(DbContextOptions<TweetDbContext> options)
             : base(options)
