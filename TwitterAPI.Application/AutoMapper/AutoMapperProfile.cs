@@ -12,6 +12,7 @@ namespace TwitterAPI.Application.AutoMapper
         public AutoMapperProfile()
         {
             CreateMap<Tweet, TweetAPIModel>().ReverseMap();
+            CreateMap<TweetHashtag, TweetHashtagsAPIModel>().ReverseMap();
             CreateMap<TweetAggregatedStatistic, TweetAggregatedStatisticAPIModel>().ReverseMap();
             CreateMap<TweetHashtagsAggregatedStatistic, TweetHashtagsAggregatedStatisticAPIModel>().ReverseMap();
         }

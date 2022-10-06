@@ -44,10 +44,12 @@ This solution consumes the sample stream and keep track of the following:
 
 * Run **TwitterAPI.DataPullingService**
 
-## Upcoming Features
+## New Features Added 10/06/2022
 * Save tweets in database via existing API until Processing Queue is implemented
 * Refator databases Tweet Model to support multiple hashtags
 * Modify data aggregation scripts to work with multiple hashtags per tweet
+
+## Upcoming Features
 * Pull aggregated data and display it on TwitterAPI.WebApp
 * Create Processing Queue 
 

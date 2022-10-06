@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TwitterAPI.Domain.Model;
 
 namespace TwitterAPI.Application.Models.APIModels
 {
@@ -16,17 +17,13 @@ namespace TwitterAPI.Application.Models.APIModels
         /// It gets or sets the tweet title
         /// </summary>
         [Required]
-        public string Title { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// It gets or sets the tweet date
         /// </summary>
         public DateTimeOffset Date { get; set; } = DateTimeOffset.Now;
 
-        /// <summary>
-        /// It gets or sets the twitter hashtag
-        /// </summary>
-        [Required]
-        public string Hashtag { get; set; }
+        public ICollection<TweetHashtagsAPIModel> Hashtags { get; set; } = new List<TweetHashtagsAPIModel>();
     }
 }

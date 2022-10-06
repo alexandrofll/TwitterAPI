@@ -9,6 +9,7 @@ namespace TwitterAPI.TwiterCore.Model
     public class SampleStreamModel
     {
         public DataModel? data { get; set; }
+        public string? rawData { get; set; }
     }
 
     public class ReferencedTweetModel

@@ -19,7 +19,7 @@ namespace TwitterAPI.Domain.Model
         /// <summary>
         /// It gets or set the hashtag 
         /// </summary>
-        public string Hashtag { get; set; }
+        public string? Hashtag { get; set; }
 
         /// <summary>
         /// It get or sets the hashtag count

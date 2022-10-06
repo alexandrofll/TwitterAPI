@@ -73,7 +73,7 @@ namespace TwitterAPI.Data.Repository
                     _tweetDbContext.TweetHashtagsAggregatedStatistics
                     .FromSqlRaw($"" +
                     $"INSERT INTO TweetHashtagsAggregatedStatistics (Hashtag, HashtagCount, TweetAggregatedStatisticId) " +
-                    $"SELECT TOP 10 Hashtag, COUNT(Hashtag) AS HashtagCount, @aggregationId FROM Tweets GROUP BY Hashtag ORDER BY HashtagCount DESC " +
+                    $"SELECT TOP 10 Hashtag, COUNT(Hashtag) AS HashtagCount, @aggregationId FROM TweetHashtags GROUP BY Hashtag ORDER BY HashtagCount DESC " +
                     $"SELECT * FROM TweetHashtagsAggregatedStatistics WHERE TweetAggregatedStatisticId = @aggregationId",
                     aggregationIdSqlParamValue
                     )

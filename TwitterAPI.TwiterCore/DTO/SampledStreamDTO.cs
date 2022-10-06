@@ -9,6 +9,7 @@ namespace TwitterAPI.TwiterCore.DTO
     public class SampleStreamDTO
     {
         public DataDTO? data { get; set; }
+        public string? rawData { get; set; }
     }
 
     public class ReferencedTweetDTO

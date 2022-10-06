@@ -18,7 +18,7 @@ namespace TwitterAPI.Domain.Model
         /// <summary>
         /// It gets or sets the tweet title
         /// </summary>
-        public string Title { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// It gets or sets the tweet date
@@ -26,8 +26,8 @@ namespace TwitterAPI.Domain.Model
         public DateTimeOffset Date { get; set; }
 
         /// <summary>
-        /// It gets or sets the twitter hashtag
+        /// It gets or set a collection of hastags for the tweet
         /// </summary>
-        public string Hashtag { get; set; }
+        public ICollection<TweetHashtag> Hashtags { get; set; } = new List<TweetHashtag>();
     }
 }

@@ -73,31 +73,7 @@ namespace TwitterAPI.TwiterCore.Services
             var eventArgs = e as ClientTweetReceivedEventArgs;
             var resultsDTO = JsonSerializer.Deserialize<SampleStreamDTO>(eventArgs.StreamDataResponse);
             SampleStreamModel model = _autoMapper.Map<SampleStreamDTO, SampleStreamModel>(resultsDTO);
-
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //TODO: REFACTOR AND CLEAN AFTER CONNECTING WITH API CALLS OR PROCESS QUEUE TO SAVE ON DATABASE
-            var input = eventArgs.StreamDataResponse;
-            var regex = new Regex(@"#\w+");
-            var hastags = regex.Matches(input);
-
-            if(hastags != null && hastags.Count > 0 && Regex.Matches(input, @"[a-zA-Z]").Count >= 4)
-            {
-                Console.WriteLine("*********************************************************************************");
-                int numberOfHashtags = 0;
-                Console.WriteLine($"Text: {resultsDTO?.data?.text}");
-                foreach (var tag in hastags)
-                {                
-                    Console.WriteLine($"Hashtag: {tag}");
-                    numberOfHashtags++;
-                }
-
-                if (numberOfHashtags > 1)
-                {
-                    Console.WriteLine("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-                    Console.WriteLine("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-                }
-            }
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            model.rawData = eventArgs.StreamDataResponse;            
 
             // raise event with Model
             OnServiceDataReceivedEvent(new ServiceDataReceivedEventArgs { StreamDataResponse = model });

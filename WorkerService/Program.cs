@@ -1,5 +1,6 @@
 using TwitterAPI.Application.Options;
 using TwitterAPI.DataPullingService;
+using TwitterAPI.DataPullingService.Services;
 using TwitterAPI.TwiterCore.Client;
 using TwitterAPI.TwiterCore.Services;
 
@@ -20,7 +21,13 @@ IHost host = Host.CreateDefaultBuilder(args)
         {
             client.BaseAddress = new Uri("https://api.twitter.com");
         });
-
+        //TODO: SETUP POLLY
+        //.AddPolicyHandler(GetRetryPolicy())
+        //.AddPolicyHandler(GetCircuitBreakerPolicy());
+        services.AddHttpClient<IDataService, DataService>(client =>
+        {
+            client.BaseAddress = new Uri("https://localhost:44313/");
+        });
         //TODO: SETUP POLLY
         //.AddPolicyHandler(GetRetryPolicy())
         //.AddPolicyHandler(GetCircuitBreakerPolicy());

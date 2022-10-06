@@ -1,3 +1,4 @@
+using TwitterAPI.DataPullingService.Services;
 using TwitterAPI.TwiterCore.EventArguments;
 using TwitterAPI.TwiterCore.Services;
 
@@ -7,20 +8,24 @@ namespace TwitterAPI.DataPullingService
     {
         private readonly ILogger<Worker> _logger;
         private readonly ISampleStreamService _service;
+        private readonly IDataService _dataService;
 
         public Worker(
             ILogger<Worker> logger,
-            ISampleStreamService service
+            ISampleStreamService service,
+            IDataService dataService
             )
         {         
             _logger = logger;
             _service = service;
+            _dataService = dataService;
         }
 
-        private static void SampleStream_ServiceDataReceived_Event(object sender, EventArgs e)
+        private async void SampleStream_ServiceDataReceived_Event(object sender, EventArgs e)
         {
             var eventArgs = e as ServiceDataReceivedEventArgs;
             var model = eventArgs?.StreamDataResponse;
+            await _dataService.ProcessTweet(model);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

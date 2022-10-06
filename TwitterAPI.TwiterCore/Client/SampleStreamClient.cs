@@ -65,8 +65,7 @@ namespace TwitterAPI.TwiterCore.Client
 
             var response = await _httpClient.PostAsync(
                 _oauth2TokenEndPoint,
-                new StringContent("grant_type=client_credentials",
-                Encoding.UTF8, "application/x-www-form-urlencoded"));
+                new StringContent("grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded"));
 
             var respondyContent = await response.Content.ReadAsStringAsync();
 
