@@ -48,75 +48,76 @@ curl -X 'GET' \
   'https://localhost:44313/Tweet/GetAggregatedStatistics' \
   -H 'accept: text/plain'
 ```  
-It will return the following Json object:
+It will return the following Json object.
+Data collected up to: 10/07/2022 1:03pm ET
 ```
 {
-  "id": 7,
-  "aggregationGuid": "67298808-a691-498e-a4af-b3a02cea463d",
-  "numberOfTweets": 90467,
-  "upToDate": "2022-10-07T16:51:11.95+00:00",
-  "top10Hashtags": [
-    {
-      "id": 61,
-      "hashtag": "#مهسا_امینی",
-      "hashtagCount": 8241,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 62,
-      "hashtag": "#نیکا_شاکرمی",
-      "hashtagCount": 3296,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 63,
-      "hashtag": "#çerkezköy",
-      "hashtagCount": 2378,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 64,
-      "hashtag": "#kapaklı",
-      "hashtagCount": 2291,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 65,
-      "hashtag": "#지구에서년지성아환영해",
-      "hashtagCount": 2210,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 66,
-      "hashtag": "#bornova",
-      "hashtagCount": 1294,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 67,
-      "hashtag": "#buca",
-      "hashtagCount": 1286,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 68,
-      "hashtag": "#กราดยิงหนองบัวลําภู",
-      "hashtagCount": 1206,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 69,
-      "hashtag": "#OpIran",
-      "hashtagCount": 1201,
-      "tweetAggregatedStatisticId": 7
-    },
-    {
-      "id": 70,
-      "hashtag": "#karşıyaka",
-      "hashtagCount": 1160,
-      "tweetAggregatedStatisticId": 7
-    }
-  ]
+    "id": 8,
+    "aggregationGuid": "a88435f6-7165-499f-bf72-4272c09d13c7",
+    "numberOfTweets": 94126,
+    "upToDate": "2022-10-07T17:02:34.33+00:00",
+    "top10Hashtags": [
+        {
+            "id": 71,
+            "hashtag": "#مهسا_امینی",
+            "hashtagCount": 8504,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 72,
+            "hashtag": "#نیکا_شاکرمی",
+            "hashtagCount": 3382,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 73,
+            "hashtag": "#çerkezköy",
+            "hashtagCount": 2492,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 74,
+            "hashtag": "#kapaklı",
+            "hashtagCount": 2401,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 75,
+            "hashtag": "#지구에서년지성아환영해",
+            "hashtagCount": 2367,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 76,
+            "hashtag": "#bornova",
+            "hashtagCount": 1336,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 77,
+            "hashtag": "#buca",
+            "hashtagCount": 1326,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 78,
+            "hashtag": "#OpIran",
+            "hashtagCount": 1243,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 79,
+            "hashtag": "#กราดยิงหนองบัวลําภู",
+            "hashtagCount": 1220,
+            "tweetAggregatedStatisticId": 8
+        },
+        {
+            "id": 80,
+            "hashtag": "#karşıyaka",
+            "hashtagCount": 1204,
+            "tweetAggregatedStatisticId": 8
+        }
+    ]
 }
 ```
 
