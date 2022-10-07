@@ -1,4 +1,4 @@
-# TwitterAPI
+﻿# TwitterAPI
 
 This TwitterAPI solution for self-education/training is a Proof of Concept of how to combine different .NET technologies (Azure, .NET 6, Worker Service, API, Event Bus, Web App, SQL Database...) for processing transactions concurrently within a high-volume transaction environment.
 
@@ -16,8 +16,8 @@ The solution uses the Twitter API which provides a sampled stream endpoint that 
 The Twitter API v2 sampled stream endpoint provides a random sample of approximately 1% of the full tweet stream that can be used for social sentiment analysis.
 
 This solution consumes the sample stream and keep track of the following:  
-� Total number of tweets received  
-� Top 10 Hashtags 
+• Total number of tweets received  
+• Top 10 Hashtags 
 
 
 #### High-Level Architecture diagram for the solution.
@@ -41,8 +41,84 @@ This solution consumes the sample stream and keep track of the following:
     "ApiSecretKey": "8kZu9rEkRx8K3ajwlvyAX1YicEbYbL3Rl1ekw8dvNijSv3CcK1"
   }
 ```
-
-* Run **TwitterAPI.DataPullingService**
+* Run with multiple startup projects **TwitterAPI.DataPullingService** and **TwitterAPI.WebAPI**
+* Use the api endpoint **Tweet/GetAggregatedStatistics** from **TwitterAPI.WebAPI** project to calculate, retrieve and view the Aggregated Statistics
+```
+curl -X 'GET' \
+  'https://localhost:44313/Tweet/GetAggregatedStatistics' \
+  -H 'accept: text/plain'
+```  
+It will return the following Json object:
+```
+{
+  "id": 7,
+  "aggregationGuid": "67298808-a691-498e-a4af-b3a02cea463d",
+  "numberOfTweets": 90467,
+  "upToDate": "2022-10-07T16:51:11.95+00:00",
+  "top10Hashtags": [
+    {
+      "id": 61,
+      "hashtag": "#مهسا_امینی",
+      "hashtagCount": 8241,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 62,
+      "hashtag": "#نیکا_شاکرمی",
+      "hashtagCount": 3296,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 63,
+      "hashtag": "#çerkezköy",
+      "hashtagCount": 2378,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 64,
+      "hashtag": "#kapaklı",
+      "hashtagCount": 2291,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 65,
+      "hashtag": "#지구에서년지성아환영해",
+      "hashtagCount": 2210,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 66,
+      "hashtag": "#bornova",
+      "hashtagCount": 1294,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 67,
+      "hashtag": "#buca",
+      "hashtagCount": 1286,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 68,
+      "hashtag": "#กราดยิงหนองบัวลําภู",
+      "hashtagCount": 1206,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 69,
+      "hashtag": "#OpIran",
+      "hashtagCount": 1201,
+      "tweetAggregatedStatisticId": 7
+    },
+    {
+      "id": 70,
+      "hashtag": "#karşıyaka",
+      "hashtagCount": 1160,
+      "tweetAggregatedStatisticId": 7
+    }
+  ]
+}
+```
 
 ## New Features Added 10/06/2022
 * Save tweets in database via existing API until Processing Queue is implemented
@@ -51,5 +127,10 @@ This solution consumes the sample stream and keep track of the following:
 
 ## Upcoming Features
 * Pull aggregated data and display it on TwitterAPI.WebApp
-* Create Processing Queue 
+* Automatically push data into the TwitterAPI.WebApp using SignalR
+* Create Processing Queue using Azure Service Bus
+* Implement Azure Key Vault for storing Twitter API Keys
+* Implement UI Dashboard using Blazor
+* Implement CRUD UI using Blazor to feed data store with manual Tweets
+
 
