@@ -30,9 +30,32 @@ namespace TwitterAPI.DataPullingService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var requestURIexpansion = "expansions=attachments.poll_ids,attachments.media_keys,author_id,entities.mentions.username,geo.place_id,in_reply_to_user_id,referenced_tweets.id,referenced_tweets.id.author_id";
-            _service.DataReceivedEvent += SampleStream_ServiceDataReceived_Event;
-            await _service.StartStreamAsync("", 1000000, 5);
+            _logger.LogInformation($"Worker running at: {DateTimeOffset.Now}");
+
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                try
+                {
+                    _logger.LogInformation($"Worker start stream: {DateTimeOffset.Now}");
+
+                    var requestURIexpansion = "expansions=attachments.poll_ids,attachments.media_keys," +
+                        "author_id,entities.mentions.username,geo.place_id,in_reply_to_user_id," +
+                        "referenced_tweets.id,referenced_tweets.id.author_id";
+
+                    _service.DataReceivedEvent += SampleStream_ServiceDataReceived_Event;
+
+                    await _service.StartStreamAsync(requestURIexpansion, 1000000, 5);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"Worker exception {ex.Message} at: {DateTimeOffset.Now}");
+
+                }
+
+                await Task.Delay(1000, stoppingToken);
+
+            }
+            
         }
     }
 }
