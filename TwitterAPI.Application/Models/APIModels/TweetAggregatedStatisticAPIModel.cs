@@ -40,5 +40,13 @@ namespace TwitterAPI.Application.Models.APIModels
         /// of the top 10 hash tags
         /// </summary>
         public ICollection<TweetHashtagsAggregatedStatisticAPIModel> Top10Hashtags { get; set; } = new List<TweetHashtagsAggregatedStatisticAPIModel>();
+
+        public double[] Data { 
+            get => Top10Hashtags?.Select(hashtag => Convert.ToDouble(hashtag.HashtagCount)).ToArray<double>();
+        }
+        public string[] Labels 
+        { 
+            get => Top10Hashtags?.Select(hashtag => hashtag.Hashtag)?.ToArray<string>();
+        }
     }
 }

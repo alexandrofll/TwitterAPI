@@ -107,5 +107,15 @@ namespace TwitterAPI.Data.Repository
 
             throw new InvalidOperationException($"There was an error while trying find the tweet");
         }
+
+        public async Task<List<Tweet>> GetAsync()
+        {
+            var result = await _tweetDbContext.Tweets.Include(tweet => tweet.Hashtags).OrderByDescending(x => x.Id).Take(100).ToListAsync();
+
+            if (result != null)
+                return result;
+
+            throw new InvalidOperationException($"There was an error while trying retrives the tweets");
+        }
     }
 }

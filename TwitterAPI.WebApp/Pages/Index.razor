@@ -1,7 +1,35 @@
 ﻿@page "/"
+@inject IDataService _dataService
+@using TwitterAPI.WebApp.Services
+@using TwitterAPI.Application.Models.APIModels
 
 <PageTitle>Index</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Hello, world!</MudText>
-<MudText Class="mb-8">Welcome to your new app, powered by MudBlazor!</MudText>
-<MudAlert Severity="Severity.Normal">You can find documentation and examples on our website here: <MudLink Href="https://mudblazor.com" Typo="Typo.body2" Color="Color.Inherit"><b>www.mudblazor.com</b></MudLink></MudAlert>
+<MudText Typo="Typo.h3" GutterBottom="true">TOP 10 Twitter Hashtags!</MudText>
+<MudText Class="mb-8">Welcome to Tweets from Sample Stream</MudText>
+<MudAlert Severity="Severity.Normal">You can find our Twitter API Solution at: <MudLink Href="https://github.com/alexandrofll/TwitterAPI" Typo="Typo.body2" Color="Color.Inherit"><b>SampleStreamTwitterAPI</b></MudLink></MudAlert>
+
+@if (aggredatedData == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@aggredatedData.Data" InputLabels="@aggredatedData.Labels">
+	<CustomGraphics>
+		<text class="donut-inner-text" x="47%" y="35%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="2">Total Tweets</text>
+		<text class="donut-inner-text" x="47%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="5">@aggredatedData.NumberOfTweets.ToString()</text>
+	</CustomGraphics>
+</MudChart>
+}
+
+
+@code {
+    private TweetAggregatedStatisticAPIModel? aggredatedData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await _dataService.GetAggregatedStatistics();
+        aggredatedData = result;
+    }
+}

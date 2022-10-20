@@ -25,5 +25,10 @@ namespace TwitterAPI.Application.Models.APIModels
         public DateTimeOffset Date { get; set; } = DateTimeOffset.Now;
 
         public ICollection<TweetHashtagsAPIModel> Hashtags { get; set; } = new List<TweetHashtagsAPIModel>();
+
+        public string HastagsToString 
+        { 
+            get => String.Join(", ", Hashtags?.Select(hashtag => hashtag.Hashtag)?.ToList()); 
+        } 
     }
 }

@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2-Application", "2.2-Appl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D3B1936-1919-4D02-891D-A67EAFE0E063}"
 	ProjectSection(SolutionItems) = preProject
+		2022-10-19_23-56-03.jpg = 2022-10-19_23-56-03.jpg
+		2022-10-19_23-56-18.jpg = 2022-10-19_23-56-18.jpg
+		2022-10-20_0-00-44.jpg = 2022-10-20_0-00-44.jpg
+		2022-10-20_0-07-45.jpg = 2022-10-20_0-07-45.jpg
 		README.md = README.md
 		TwitterAPIDiagram.png = TwitterAPIDiagram.png
 	EndProjectSection

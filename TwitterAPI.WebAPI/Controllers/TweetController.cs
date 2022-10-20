@@ -63,6 +63,27 @@ namespace TwitterAPI.WebAPI.Controllers
             }
         }
 
+        // GET api/<TwitterAPIController>/
+        [HttpGet]
+        [ProducesResponseType(typeof(List<TweetAPIModel>), 200)]
+        [ProducesResponseType(400)]//bad request
+        [ProducesResponseType(404)]//not found
+        [ProducesResponseType(500)]//internal server error
+
+        public async Task<ActionResult<List<TweetAPIModel>>> Get()
+        {
+            try
+            {
+                var result = await _tweetService.GetTweets();
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         // GET: api/<TwitterAPIController>
         [HttpGet("GetAggregatedStatistics")]
         [ProducesResponseType(typeof(TweetAPIModel), 200)]

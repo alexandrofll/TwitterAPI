@@ -44,5 +44,12 @@ namespace TwitterAPI.Application.Services
             var tweetAggregatedStatisticAPIModel = _mapper.Map<TweetAggregatedStatisticAPIModel>(tweetAggregatedStatistic);
             return tweetAggregatedStatisticAPIModel;
         }
+
+        public async Task<List<TweetAPIModel>> GetTweets()
+        {
+            var result = await _tweetRepository.GetAsync();
+            var resultViewModel = _mapper.Map<List<TweetAPIModel>>(result);
+            return resultViewModel;
+        }
     }
 }
