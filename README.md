@@ -41,83 +41,119 @@ This solution consumes the sample stream and keep track of the following:
     "ApiSecretKey": "8kZu9rEkRx8K3ajwlvyAX1YicEbYbL3Rl1ekw8dvNijSv3CcK1"
   }
 ```
-* Run with multiple startup projects **TwitterAPI.DataPullingService** and **TwitterAPI.WebAPI**
-* Use the api endpoint **Tweet/GetAggregatedStatistics** from **TwitterAPI.WebAPI** project to calculate, retrieve and view the Aggregated Statistics
+
+* Run with multiple startup projects:
+* 
+* **TwitterAPI.DataPullingService**
+* ![My Image](2022-10-20_0-00-44.jpg)
+* 
+* **TwitterAPI.WebAPI**
+* ![My Image](2022-10-20_0-07-45.jpg)
+
+* **TwitterAPI.WebApp**
+* ![My Image](2022-10-19_23-56-03.jpg)
+* ![My Image](2022-10-19_23-56-18.jpg)
+
+* Use **TwitterAPI.WebApp** or the api endpoint **Tweet/GetAggregatedStatistics** from **TwitterAPI.WebAPI** project to calculate, retrieve and view the Aggregated Statistics
 ```
 curl -X 'GET' \
   'https://localhost:44313/Tweet/GetAggregatedStatistics' \
   -H 'accept: text/plain'
 ```  
 It will return the following Json object.
-Data collected up to: 10/07/2022 1:03pm ET
+Data collected up to: 10/20/2022 12:11am ET
 ```
 {
-    "id": 8,
-    "aggregationGuid": "a88435f6-7165-499f-bf72-4272c09d13c7",
-    "numberOfTweets": 94126,
-    "upToDate": "2022-10-07T17:02:34.33+00:00",
-    "top10Hashtags": [
-        {
-            "id": 71,
-            "hashtag": "#مهسا_امینی",
-            "hashtagCount": 8504,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 72,
-            "hashtag": "#نیکا_شاکرمی",
-            "hashtagCount": 3382,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 73,
-            "hashtag": "#çerkezköy",
-            "hashtagCount": 2492,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 74,
-            "hashtag": "#kapaklı",
-            "hashtagCount": 2401,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 75,
-            "hashtag": "#지구에서년지성아환영해",
-            "hashtagCount": 2367,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 76,
-            "hashtag": "#bornova",
-            "hashtagCount": 1336,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 77,
-            "hashtag": "#buca",
-            "hashtagCount": 1326,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 78,
-            "hashtag": "#OpIran",
-            "hashtagCount": 1243,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 79,
-            "hashtag": "#กราดยิงหนองบัวลําภู",
-            "hashtagCount": 1220,
-            "tweetAggregatedStatisticId": 8
-        },
-        {
-            "id": 80,
-            "hashtag": "#karşıyaka",
-            "hashtagCount": 1204,
-            "tweetAggregatedStatisticId": 8
-        }
-    ]
+  "id": 22,
+  "aggregationGuid": "e3ec6f1e-4e22-4d11-9021-3fe5adb1c647",
+  "numberOfTweets": 273854,
+  "upToDate": "2022-10-20T04:06:51.3766667+00:00",
+  "top10Hashtags": [
+    {
+      "id": 201,
+      "hashtag": "#مهسا_امینی",
+      "hashtagCount": 16490,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 202,
+      "hashtag": "#çerkezköy",
+      "hashtagCount": 10862,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 203,
+      "hashtag": "#kapaklı",
+      "hashtagCount": 9658,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 204,
+      "hashtag": "#buca",
+      "hashtagCount": 5937,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 205,
+      "hashtag": "#지구에서년지성아환영해",
+      "hashtagCount": 5548,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 206,
+      "hashtag": "#bornova",
+      "hashtagCount": 5053,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 207,
+      "hashtag": "#نیکا_شاکرمی",
+      "hashtagCount": 4653,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 208,
+      "hashtag": "#karşıyaka",
+      "hashtagCount": 4636,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 209,
+      "hashtag": "#alsancak",
+      "hashtagCount": 3888,
+      "tweetAggregatedStatisticId": 22
+    },
+    {
+      "id": 210,
+      "hashtag": "#cigli",
+      "hashtagCount": 3777,
+      "tweetAggregatedStatisticId": 22
+    }
+  ],
+  "data": [
+    16490,
+    10862,
+    9658,
+    5937,
+    5548,
+    5053,
+    4653,
+    4636,
+    3888,
+    3777
+  ],
+  "labels": [
+    "#مهسا_امینی",
+    "#çerkezköy",
+    "#kapaklı",
+    "#buca",
+    "#지구에서년지성아환영해",
+    "#bornova",
+    "#نیکا_شاکرمی",
+    "#karşıyaka",
+    "#alsancak",
+    "#cigli"
+  ]
 }
 ```
 
@@ -126,12 +162,15 @@ Data collected up to: 10/07/2022 1:03pm ET
 * Refator databases Tweet Model to support multiple hashtags
 * Modify data aggregation scripts to work with multiple hashtags per tweet
 
-## Upcoming Features
+## New Features Added 10/20/2022
 * Pull aggregated data and display it on TwitterAPI.WebApp
+* Implement Aggregated Tweets Data Dashboard using Mudblazor
+* Implement Tweet List using Blazor
+
+## Upcoming Features
 * Automatically push data into the TwitterAPI.WebApp using SignalR
 * Create Processing Queue using Azure Service Bus
 * Implement Azure Key Vault for storing Twitter API Keys
-* Implement UI Dashboard using Blazor
 * Implement CRUD UI using Blazor to feed data store with manual Tweets
 
 

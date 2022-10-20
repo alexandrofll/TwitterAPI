@@ -6,6 +6,7 @@ namespace TwitterAPI.Data.Repository
     {
         Task<Tweet> AddAsync(Tweet model);
         Task<Tweet> GetAsync(int id);
+        Task<List<Tweet>> GetAsync();
         Task<TweetAggregatedStatistic> GetAggregatedStatisticsAsync();
     }
 }

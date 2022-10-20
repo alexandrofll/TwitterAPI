@@ -27,5 +27,11 @@ namespace TwitterAPI.Application.Services
         /// <param name="tweetAPIModel"></param>
         /// <returns></returns>
         Task<TweetAPIModel> Create(TweetAPIModel tweetAPIModel);
+
+        /// <summary>
+        /// It returns the last 1000 tweets
+        /// </summary>
+        /// <returns></returns>
+        Task<List<TweetAPIModel>> GetTweets();
     }
 }
